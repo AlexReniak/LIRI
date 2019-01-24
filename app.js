@@ -23,15 +23,22 @@ console.log(userInput)
 // concert-this function
 // run user input in bandsintown api and return results about event
 function concertThis() {
-  console.log("-------------------------");
+  console.log("\n-------------------------\n");
   axios
     .get(`https://rest.bandsintown.com/artists/${userInput}/events?app_id=codingbootcamp`)
     .then(response => {
       console.log(`The venue is ${response.data[0].venue.name}, in ${response.data[0].venue.city}, ${response.data[0].venue.region}`);
       let dateConvert = JSON.stringify(response.data[0].datetime);
       datePerform = moment(dateConvert, "YYYY-MM-DDTHH:mm:ss").format("MM/DD/YYYY")
-      console.log(datePerform);
-      console.log("-------------------------");
+      console.log(`Date performing: ${datePerform}`);
+      console.log("\n-------------------------\n");
+      fs.appendFile("log.txt",
+      `\n-------------------------\nCommand: ${command} \nVenue: ${response.data[0].venue.name} \nLocation: ${response.data[0].venue.city}, ${response.data[0].venue.region} \nDate performing: ${datePerform} \n-------------------------`,
+      error => {
+        if (error) {
+          console.log(error);
+        }
+      })
     })
     .catch(error => console.log(error));
 };
@@ -39,13 +46,20 @@ function concertThis() {
 // spotify-this-song function
 // take in user input and return data about the song searched
 function spotifyThisSong(input) {
-  console.log("-------------------------");
+  console.log("\n-------------------------\n");
   spotify
     .request(`https://api.spotify.com/v1/search?q=${input}&type=track&limit=1`)
     .then(data => {
       console.log(
         `Song: ${data.tracks.items[0].name} \nAlbum: ${data.tracks.items[0].album.name} \nBand: ${data.tracks.items[0].artists[0].name}  \nPreview the song here: ${data.tracks.items[0].preview_url}`);
-        console.log("-------------------------");
+        console.log("\n-------------------------\n");
+        fs.appendFile("log.txt",
+        `\n-------------------------\nCommand: ${command} \nSong: ${data.tracks.items[0].name} \n${data.tracks.items[0].album.name} \nBand: ${data.tracks.items[0].artists[0].name} \nPreview song url: ${data.tracks.items[0].preview_url} \n-------------------------`,
+        error => {
+          if (error) {
+            console.log(error);
+          }
+        });
     })    
     .catch(error => console.log(error));
 }
@@ -53,12 +67,12 @@ function spotifyThisSong(input) {
 // movie-this function
 // take in user input and return data about the movie that was searched
 function movieThis(input) {
-  console.log("-------------------------");
+  console.log("\n-------------------------\n");
   axios
     .get(`http://www.omdbapi.com/?apikey=trilogy&t=${input}`)
     .then(response => {
       console.log(`Title: ${response.data.Title} \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguage: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors}`);
-      console.log("-------------------------");
+      console.log("\n-------------------------\n");
     })
     .catch(error => console.log(error));
 };
@@ -66,7 +80,7 @@ function movieThis(input) {
 // do-what-it-says function
 // take song from random.txt file and use it as search paramenter for spotify API
 function doWhatItSays() {
-  console.log("-------------------------");
+  console.log("\n-------------------------\n");
   fs.readFile("random.txt", "utf8", (error, data) => {
     if (error) {
       return console.log(error);
@@ -75,7 +89,7 @@ function doWhatItSays() {
     const spotifyInput = dataArr[1].replace(/ /g, "+");
 
     spotifyThisSong(spotifyInput);
-    console.log("-------------------------")
+    console.log("\n-------------------------\n");
   });
 };
 
