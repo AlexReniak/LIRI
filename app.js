@@ -48,7 +48,7 @@ function concertThis() {
 function spotifyThisSong(input) {
   console.log("\n-------------------------\n");
   spotify
-    .request(`https://api.spotify.com/v1/search?q=${input}&type=track&limit=1`)
+    .request(`https://api.spotify.com/v1/search?q=${input}&type=track&limit=1&`)
     .then(data => {
       console.log(
         `Song: ${data.tracks.items[0].name} \nAlbum: ${data.tracks.items[0].album.name} \nBand: ${data.tracks.items[0].artists[0].name}  \nPreview the song here: ${data.tracks.items[0].preview_url}`);
@@ -73,7 +73,7 @@ function movieThis(input) {
     .then(response => {
       console.log(`Title: ${response.data.Title} \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguages: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors}`);
       console.log("\n-------------------------\n");
-      fs.appendFile("log.txt", `\n------------------------- \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguages: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors} \n-------------------------`,
+      fs.appendFile("log.txt", `\n------------------------- \nTitle: ${response.data.Title}\nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguages: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors} \n-------------------------`,
       error => {
         if (error) {
           console.log(error);
@@ -121,5 +121,5 @@ switch (command) {
   break;
 
   default:
-    console.log("Please enter a command");
+    console.log("Please enter a command of 'concert-this' to search for concerts, 'spotify-this-song' to search for a song on spotify, 'movie-this' to search for a movie, or 'do-what-it-says'");
 }; 
