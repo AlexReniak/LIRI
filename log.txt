@@ -1,0 +1,74 @@
+
+-------------------------
+Command: concert-this 
+Venue: Back To The Beach Festival 
+Location: Huntington Beach, CA 
+Date performing: 04/27/2019 
+-------------------------
+-------------------------
+Command: spotify-this-song 
+Song: Jesus Of Suburbia 
+American Idiot 
+Band: Green Day 
+Preview song url: https://p.scdn.co/mp3-preview/ec083b4edfdd1a4cbfb642b231d797e67ceaf69f?cid=8b7cae8adb5645e2865c8ef84144794c 
+-------------------------
+-------------------------
+Command: spotify-this-song 
+Song: Scared of the Dark (feat. XXXTENTACION) 
+Spider-Man: Into the Spider-Verse (Soundtrack From & Inspired by the Motion Picture) 
+Band: Lil Wayne 
+Preview song url: null 
+-------------------------
+------------------------- 
+Year released: 1994 
+IMDB rating: 9.3 
+Rotton Tomatoes rating: 91% 
+Country movie was produced: USA 
+Languages: English 
+Plot: Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. 
+Actors: Tim Robbins, Morgan Freeman, Bob Gunton, William Sadler 
+-------------------------
+------------------------- 
+Year released: 2009 
+IMDB rating: 7.9 
+Rotton Tomatoes rating: 67% 
+Country movie was produced: Belgium, Germany, Canada, France, USA, UK 
+Languages: English, Mohawk 
+Plot: A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible. 
+Actors: Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham 
+-------------------------
+-------------------------
+Command: do-what-it-says 
+Song: I Want It That Way 
+The Hits--Chapter One 
+Band: Backstreet Boys 
+Preview song url: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=8b7cae8adb5645e2865c8ef84144794c 
+-------------------------
+-------------------------
+Command: do-what-it-says 
+Song: I Want It That Way 
+The Hits--Chapter One 
+Band: Backstreet Boys 
+Preview song url: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=8b7cae8adb5645e2865c8ef84144794c 
+-------------------------
+-------------------------
+Command: do-what-it-says 
+Song: I Want It That Way 
+The Hits--Chapter One 
+Band: Backstreet Boys 
+Preview song url: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=8b7cae8adb5645e2865c8ef84144794c 
+-------------------------
+-------------------------
+Command: do-what-it-says 
+Song: I Want It That Way 
+The Hits--Chapter One 
+Band: Backstreet Boys 
+Preview song url: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=8b7cae8adb5645e2865c8ef84144794c 
+-------------------------
+-------------------------
+Command: do-what-it-says 
+Song: I Want It That Way 
+The Hits--Chapter One 
+Band: Backstreet Boys 
+Preview song url: https://p.scdn.co/mp3-preview/e72a05dc3f69c891e3390c3ceaa77fad02f6b5f6?cid=8b7cae8adb5645e2865c8ef84144794c 
+-------------------------

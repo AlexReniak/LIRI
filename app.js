@@ -58,7 +58,7 @@ function spotifyThisSong(input) {
         error => {
           if (error) {
             console.log(error);
-          }
+          };
         });
     })    
     .catch(error => console.log(error));
@@ -71,8 +71,14 @@ function movieThis(input) {
   axios
     .get(`http://www.omdbapi.com/?apikey=trilogy&t=${input}`)
     .then(response => {
-      console.log(`Title: ${response.data.Title} \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguage: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors}`);
+      console.log(`Title: ${response.data.Title} \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguages: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors}`);
       console.log("\n-------------------------\n");
+      fs.appendFile("log.txt", `\n------------------------- \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguages: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors} \n-------------------------`,
+      error => {
+        if (error) {
+          console.log(error);
+        }
+      });
     })
     .catch(error => console.log(error));
 };
@@ -80,7 +86,6 @@ function movieThis(input) {
 // do-what-it-says function
 // take song from random.txt file and use it as search paramenter for spotify API
 function doWhatItSays() {
-  console.log("\n-------------------------\n");
   fs.readFile("random.txt", "utf8", (error, data) => {
     if (error) {
       return console.log(error);
@@ -88,8 +93,7 @@ function doWhatItSays() {
     const dataArr = data.split(",");
     const spotifyInput = dataArr[1].replace(/ /g, "+");
 
-    spotifyThisSong(spotifyInput);
-    console.log("\n-------------------------\n");
+    spotifyThisSong(spotifyInput);;
   });
 };
 
@@ -97,6 +101,7 @@ function doWhatItSays() {
 switch (command) {
   
   case "concert-this":
+    userInput = userInput || "Blink-182";
     concertThis();
   break;
 
