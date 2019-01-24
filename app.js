@@ -10,13 +10,15 @@ const spotify = new Spotify({
   id: process.env.SPOTIFY_ID,
   secret: process.env.SPOTIFY_SECRET
 });
+const fs = require("fs");
 const command = process.argv[2];
-let userInput = process.argv.splice(3,process.argv.length).join("+");
+const userInput = process.argv.splice(3,process.argv.length).join("+");
 
 
 // Commands from node:
 
 // concert-this function
+// run user input in bandsintown api and return results about event
 function concertThis() {
   axios
     .get(`https://rest.bandsintown.com/artists/${userInput}/events?app_id=codingbootcamp`)
@@ -30,6 +32,7 @@ function concertThis() {
 };
 
 // spotify-this-song function
+// take in user input and return data about the song searched
 function spotifyThisSong(input) {
   spotify
     .request(`https://api.spotify.com/v1/search?q=${input}&type=track&limit=1`)
@@ -42,6 +45,7 @@ function spotifyThisSong(input) {
 }
 
 // movie-this function
+// take in user input and return data about the movie that was searched
 function movieThis(input) {
   axios
     .get(`http://www.omdbapi.com/?apikey=trilogy&t=${input}`)
@@ -49,18 +53,19 @@ function movieThis(input) {
       console.log(`Title: ${response.data.Title} \nYear released: ${response.data.Year} \nIMDB rating: ${response.data.imdbRating} \nRotton Tomatoes rating: ${response.data.Ratings[1].Value} \nCountry movie was produced: ${response.data.Country} \nLanguage: ${response.data.Language} \nPlot: ${response.data.Plot} \nActors: ${response.data.Actors}`);
     })
     .catch(error => console.log(error));
-
-    // response.data.Title
-    // response.data.Year
-    // response.data.imdbRating
-    // response.data.Ratings[1].Value
-    // response.data.Country
-    // response.data.Language
-    // response.data.Plot
-    // response.data.Actors
-}
+};
 
 // do-what-it-says function
+function doWhatItSays() {
+  fs.readFile("random.txt", "utf8", (error, data) => {
+    if (error) {
+      return console.log(error)
+    };
+    let defaultInput = "I Want it That Way"
+    defaultInput.split(" ").join("+")
+    spotifyThisSong(defaultInput);
+  });
+};
 
 // Create switch statement that runs each function when called upon
 switch (command) {
@@ -70,24 +75,19 @@ switch (command) {
   break;
 
   case "spotify-this-song":
+    let defaultInput = "The Sign"
+    let defaultSearch = defaultInput.split(" ").join("")
+    (userInput != false) ? spotifyThisSong(userInput) : spotifyThisSong(defaultSearch)
     spotifyThisSong(userInput);
-    // if (userInput === undefined) {
-    //   let defaultInput = "The Sign";
-    //   defaultInput.split(" ").join("+");
-    //   spotifyThisSong(defaultInput);
-    // }  
-    // else {
-    //   spotifyThisSong(userInput);
-    // }
   break;
 
   case "movie-this":
     movieThis(userInput);
   break;
 
-  // case "do-what-it-says":
-  //   doWhatItSays();
-  // break;
+  case "do-what-it-says":
+    doWhatItSays();
+  break;
 
   default:
     console.log("Please enter a command");
